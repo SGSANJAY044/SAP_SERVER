@@ -4,70 +4,70 @@ const User = require('../model/user')
 module.exports.getallfilter = async (req, res) => {
     try {
         console.log(req.body)
-        const {category, sub_category, io, year, classname} = {...req.body}
+        const { category, sub_category, io, year, classname } = { ...req.body }
 
         if (category == "Select" && sub_category == "Select" && io == "Select" && year == "Select" && classname == "Select")
             var saps = await Sap.find({})
         else if (category == "Select" && sub_category == "Select" && io == "Select" && year == "Select")
-            var saps = await Sap.find({classname})
+            var saps = await Sap.find({ classname })
         else if (category == "Select" && sub_category == "Select" && io == "Select" && classname == "Select")
-            var saps = await Sap.find({year})
+            var saps = await Sap.find({ year })
         else if (category == "Select" && sub_category == "Select" && year == "Select" && classname == "Select")
-            var saps = await Sap.find({io})
+            var saps = await Sap.find({ io })
         else if (category == "Select" && io == "Select" && year == "Select" && classname == "Select")
-            var saps = await Sap.find({sub_category})
+            var saps = await Sap.find({ sub_category })
         else if (sub_category == "Select" && io == "Select" && year == "Select" && classname == "Select")
-            var saps = await Sap.find({category})
+            var saps = await Sap.find({ category })
         else if (io == "Select" && year == "Select" && classname == "Select")
-            var saps = await Sap.find({category, sub_category})
+            var saps = await Sap.find({ category, sub_category })
         else if (sub_category == "Select" && year == "Select" && classname == "Select")
-            var saps = await Sap.find({category, io})
+            var saps = await Sap.find({ category, io })
         else if (sub_category == "Select" && io == "Select" && classname == "Select")
-            var saps = await Sap.find({category, year})
+            var saps = await Sap.find({ category, year })
         else if (sub_category == "Select" && io == "Select" && year == "Select")
-            var saps = await Sap.find({category, classnamee})
+            var saps = await Sap.find({ category, classnamee })
         else if (category == "Select" && year == "Select" && classname == "Select")
-            var saps = await Sap.find({sub_category, io})
+            var saps = await Sap.find({ sub_category, io })
         else if (category == "Select" && io == "Select" && classname == "Select")
-            var saps = await Sap.find({sub_category, year})
+            var saps = await Sap.find({ sub_category, year })
         else if (category == "Select" && io == "Select" && year == "Select")
-            var saps = await Sap.find({sub_category, classname})
+            var saps = await Sap.find({ sub_category, classname })
         else if (category == "Select" && sub_category == "Select" && classname == "Select")
-            var saps = await Sap.find({io, year})
+            var saps = await Sap.find({ io, year })
         else if (category == "Select" && sub_category == "Select" && year == "Select")
-            var saps = await Sap.find({io, classname})
+            var saps = await Sap.find({ io, classname })
         else if (category == "Select" && sub_category == "Select" && io == "Select")
-            var saps = await Sap.find({year, classname})
+            var saps = await Sap.find({ year, classname })
         else if (category == "Select" && sub_category == "Select")
-            var saps = await Sap.find({io, year, classname})
+            var saps = await Sap.find({ io, year, classname })
         else if (category == "Select" && io == "Select")
-            var saps = await Sap.find({sub_category, year, classname})
+            var saps = await Sap.find({ sub_category, year, classname })
         else if (category == "Select" && year == "Select")
-            var saps = await Sap.find({sub_category, io, classname})
+            var saps = await Sap.find({ sub_category, io, classname })
         else if (category == "Select" && classname == "Select")
-            var saps = await Sap.find({io, sub_category, year})
+            var saps = await Sap.find({ io, sub_category, year })
         else if (sub_category == "Select" && io == "Select")
-            var saps = await Sap.find({category, year, classname})
+            var saps = await Sap.find({ category, year, classname })
         else if (sub_category == "Select" && year == "Select")
-            var saps = await Sap.find({category, io, classname})
+            var saps = await Sap.find({ category, io, classname })
         else if (sub_category == "Select" && classname == "Select")
-            var saps = await Sap.find({category, io, year})
+            var saps = await Sap.find({ category, io, year })
         else if (io == "Select" && classname == "Select")
-            var saps = await Sap.find({category, sub_category, year})
+            var saps = await Sap.find({ category, sub_category, year })
         else if (io == "Select" && year == "Select")
-            var saps = await Sap.find({category, sub_category, classname})
+            var saps = await Sap.find({ category, sub_category, classname })
         else if (year == "Select" && classname == "Select")
-            var saps = await Sap.find({category, sub_category, io})
+            var saps = await Sap.find({ category, sub_category, io })
         else if (category == "Select")
-            var saps = await Sap.find({io, sub_category, year, classname})
+            var saps = await Sap.find({ io, sub_category, year, classname })
         else if (sub_category == "Select")
-            var saps = await Sap.find({category, io, year, classname})
+            var saps = await Sap.find({ category, io, year, classname })
         else if (io == "Select")
-            var saps = await Sap.find({category, sub_category, year, classname})
+            var saps = await Sap.find({ category, sub_category, year, classname })
         else if (year == "Select")
-            var saps = await Sap.find({category, sub_category, io, classname})
+            var saps = await Sap.find({ category, sub_category, io, classname })
         else if (classname == "Select")
-            var saps = await Sap.find({category, sub_category, year, io})
+            var saps = await Sap.find({ category, sub_category, year, io })
 
         res.status(200).json(saps)
     } catch (error) {
@@ -99,14 +99,20 @@ module.exports.getallsap = async (req, res) => {
 
 module.exports.newsap = async (req, res) => {
     try {
-        const {id} = req.params;
-        const sap = new Sap({...req.body})
+        const { id } = req.params;
+        const sap = new Sap({ ...req.body, points: Math.floor(Math.random() * (4 - 1 + 1) + 1) * 10 })
         console.log(req.file)
         if (req.file) {
             sap.proof = req.file.path
         }
+        console.log(id);
         const user = await User.findById(id)
         user.sap_points_unverified.push(sap);
+        if (user.points) {
+            user.points += sap.points;
+        } else {
+            user.points = sap.points;
+        }
         await sap.save();
         await user.save();
         res.status(200).json("success");
@@ -120,7 +126,7 @@ module.exports.newsap = async (req, res) => {
 module.exports.editsap = async (req, res) => {
     const id = req.body.id
     try {
-        const sap = await Sap.findByIdAndUpdate(id, {...req.body});
+        const sap = await Sap.findByIdAndUpdate(id, { ...req.body });
         await sap.save()
         res.status(200).json('sap edited')
     } catch (error) {

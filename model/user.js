@@ -32,6 +32,10 @@ const userSchema = new Schema({
     department: {
         type: String,
     },
+    points: {
+        type: Number,
+        default: 0
+    },
     sap_points_verified: [{
         type: Schema.Types.ObjectId,
         ref: "Sap",
