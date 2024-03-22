@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const sapSchema = new Schema({
-    name: {
+    rollno: {
         type: String,
         required: true
     },
     proof: {
+        type: String,
+    },
+    semster:{
         type: String,
     },
     category: {
@@ -18,18 +21,20 @@ const sapSchema = new Schema({
     io: {
         type: String,
     },
+    extra_details:{
+        type: Object,
+    },
     points: {
         type: Number,
         default: 0
     },
-    rollno: {
-        type: String
+    startDate:{
+        type: Date,
+        default:Date.now()
     },
-    year: {
-        type: String
-    },
-    classname: {
-        type: String
+    endDate:{
+        type: Date,
+        default:Date.now()
     },
     verification_status: {
         type: String,

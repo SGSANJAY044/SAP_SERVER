@@ -3,15 +3,15 @@ const User = require('../model/user')
 const Staff = require('../model/staff')
 
 module.exports.signup = async (req, res) => {
-    const {user_name, kongu_email, password, rollno, classname, department, year} = {...req.body}
+    const { kongu_email, password, ...data } = { ...req.body }
 
     try {
-        const existinguser = await User.findOne({kongu_email})
+        const existinguser = await User.findOne({ kongu_email })
         if (existinguser) {
             return res.status(400).json('User already found..')
         }
         const hashPassword = await bcrypt.hash(password, 12);
-        const newUser = new User({user_name, kongu_email, password: hashPassword, rollno, year, classname, department})
+        const newUser = new User({ ...data, kongu_email,password: hashPassword })
         await newUser.save();
         res.status(200).json(newUser)
     } catch (err) {
@@ -21,11 +21,11 @@ module.exports.signup = async (req, res) => {
 }
 
 module.exports.login = async (req, res) => {
-    const {kongu_email, password} = req.body;
+    const { kongu_email, password } = req.body;
     try {
-        var existinguser = await User.findOne({kongu_email})
+        var existinguser = await User.findOne({ kongu_email })
         if (!existinguser) {
-            existinguser = await Staff.findOne({kongu_email})
+            existinguser = await Staff.findOne({ kongu_email })
             if (!existinguser) {
                 console.log("User not found...");
                 return res.status(404).json("User not found...")
@@ -43,7 +43,7 @@ module.exports.login = async (req, res) => {
 
 module.exports.get_user = async (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         var user = await User.findById(id);
         if (user == null)
             user = await Staff.findById(id);
@@ -56,10 +56,10 @@ module.exports.get_user = async (req, res) => {
 }
 
 module.exports.editProfile = async (req, res) => {
-    const {id} = req.params
+    const { id } = req.params
     console.log(id)
     try {
-        const user = await Staff.findByIdAndUpdate(id, {...req.body});
+        const user = await Staff.findByIdAndUpdate(id, { ...req.body });
         await user.save();
         res.status(200).json("Successfully Edited")
     } catch (error) {

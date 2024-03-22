@@ -7,7 +7,7 @@ const {login} = require('../controllers/user_controller')
 
 router.get('/', getallstaff);
 router.get('/find/:dept', getstaff);
-router.get('/login', login);
+router.post('/login', login);
 router.post('/register', signup);
 // router.post('/:id/assign', assign);
 
