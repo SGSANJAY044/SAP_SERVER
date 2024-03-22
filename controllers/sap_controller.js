@@ -75,7 +75,16 @@ module.exports.getallfilter = async (req, res) => {
         res.status(500).json(error)
     }
 }
-
+module.exports.verify = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const sap = await Sap.findByIdAndUpdate(id, { ...req.body });
+        await sap.save()
+        res.status(200).json('sap verified')
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
 module.exports.getall = async (req, res) => {
     try {
         const saps = await Sap.find({})
