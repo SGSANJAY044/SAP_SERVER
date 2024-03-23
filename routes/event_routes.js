@@ -21,4 +21,5 @@ router.post('/add', upload.single('poster'), addEvent);
 router.patch('/edit/:id', editEvent);
 router.delete('/delete/:id', deleteEvent);
 
+
 module.exports = router;

@@ -14,12 +14,13 @@ var storage = multer.diskStorage({
 })
 
 var upload = multer({storage: storage})
-const {getall, getallsap, getallfilter, deletesap, newsap, editsap} = require('../controllers/sap_controller')
+const {getall, getallsap, getallfilter, deletesap, newsap, editsap,verify} = require('../controllers/sap_controller')
 
 router.get('/all/', getall);
 router.get('/all/:id', getallsap);
 router.post('/all/filter', getallfilter);
 router.post('/add/:id', upload.single('proof'), newsap);
+router.put('/verify/:id', verify);
 router.patch('/:id/edit/:sid', editsap);
 router.patch('/:id/delete/:sid', deletesap);
 
