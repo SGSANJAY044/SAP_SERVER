@@ -99,11 +99,12 @@ module.exports.getallsap = async (req, res) => {
 
 module.exports.newsap = async (req, res) => {
     try {
+        console.log(req);
         const { id } = req.params;
-        const sap = new Sap({ ...req.body, points: Math.floor(Math.random() * (4 - 1 + 1) + 1) * 10 })
-        console.log(req.file)
-        if (req.file) {
-            sap.proof = req.file.path
+        const sap = new Sap({ ...req.body,proof:'', points: Math.floor(Math.random() * (4 - 1 + 1) + 1) * 10 })
+        console.log(req.body.file)
+        if (req.body.file) {
+            sap.proof = req.body.file.path
         }
         console.log(id);
         const user = await User.findById(id)
